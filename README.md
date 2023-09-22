@@ -1,1 +1,2 @@
-# COO
+HIRTZ Gregoire 
+LOPPINET Stéphane
