@@ -1,0 +1,30 @@
+@startuml
+title Calculer Moyenne Matiere Groupe
+
+activate Main
+Main -> "g: Groupe": g.calculerMoyGrpMat("Français")
+activate "g: Groupe"
+
+"g: Groupe" -> "g: Groupe": sommeNote = 0
+"g: Groupe" -> "g: Groupe": i=0
+loop i<etudiant.size()
+
+    "g: Groupe" -> "etudiants: List<Etudiant>": etudiants.get(i)
+    activate "etudiants: List<Etudiant>"
+    "etudiants: List<Etudiant>" --> "g: Groupe": etu
+    deactivate "etudiants: List<Etudiant>"
+
+    "g: Groupe" -> "etu: Etudiant": etu.calculerMoyMat("Français")
+    activate "etu: Etudiant"
+    "etu: Etudiant" --> "g: Groupe": moyMat
+    deactivate "etu: Etudiant"
+
+    "g: Groupe" -> "g: Groupe": sommeNote = sommeNote + moyMat
+
+end
+
+"g: Groupe" -> "g: Groupe": moyGenMat = sommeNote/etudiants.size()
+
+"g: Groupe" --> Main: moyGenMat
+
+@enduml

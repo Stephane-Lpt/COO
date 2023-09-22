@@ -1,0 +1,39 @@
+@startuml
+title Calculer moyenne Générale etudiant
+
+create Main
+activate Main
+
+create "etu: Etudiant"
+Main -> "etu: Etudiant": new Etudiant()
+
+
+Main -> "etu: Etudiant": etu.calculerMoyGen()
+activate "etu: Etudiant"
+"etu: Etudiant" -> "etu: Etudiant": sommeNote=0
+"etu: Etudiant" -> "etu: Etudiant": sommeCoef=0
+
+
+loop String mat : matNotes.keySet()
+
+"etu: Etudiant" -> "etu: Etudiant": etu.calculerMoyMat(mat)
+activate "etu: Etudiant"
+"etu: Etudiant" -> "etu: Etudiant": moy
+deactivate "etu: Etudiant"
+
+"etu: Etudiant" -> "formation: Formation": formation.getCoef(m)
+activate "formation: Formation"
+"formation: Formation" -> "etu: Etudiant": coef
+deactivate "formation: Formation"
+
+"etu: Etudiant" -> "etu: Etudiant": sommeCoef = sommeCoef + coef
+"etu: Etudiant" -> "etu: Etudiant": sommeNote = sommeNote + (moy*coef)
+
+
+end
+"etu: Etudiant" -> "etu: Etudiant": moyGen = sommeNote / sommeCoef
+
+
+"etu: Etudiant" -> Main: moyGen
+
+@enduml

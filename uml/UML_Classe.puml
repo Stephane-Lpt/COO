@@ -1,0 +1,50 @@
+
+@startuml
+
+title Diagramme de Classe - TP2 Partie 2
+
+class Etudiant{
+    - matNotes : <u>HashMap</u><matiere : <u>chaine</u>, note : <u>List<double></u> >
+
+    + Etudiant(nip: <u>chaine</u>, nom: <u>chaine</u>, prenom: <u>chaine</u>, formation: <u>Formation</u>)
+
+    + ajouterNote(matiere: <u>chaine</u>, note: <u>double</u>)
+    + calculerMoyMat(matiere: <u>chaine</u>): <u>double</u>
+    + calculerMoyGen(): <u>double</u>
+}
+Etudiant --> Identite: - id
+Etudiant --> Formation: - formation
+
+class Identite{
+    - nip : <u>chaine</u>
+    - nom : <u>chaine</u>
+    - prenom : <u>chaine</u>
+
+    + Identite(nip: <u>chaine</u>, nom: <u>chaine</u>, prenom: <u>chaine</u>)
+}
+
+class Formation{
+    - identifiant : <u>chaine</u>
+    - coefMatieres : <u>HashMap</u><matiere : <u>chaine</u>, coef : <u>double</u>>
+
+    + Formation(identifiant: <u>chaine</u>)
+
+    + ajouterMat(matiere: <u>chaine</u>, coef: <u>double</u>)
+    + supprimerMat(matiere: <u>chaine</u>)
+    + getCoef(matiere: <u>chaine</u>): double
+}
+
+class Groupe{
+    + Groupe(formation: <u>Formation</u>)
+
+    + ajouterEtu(etu: <u>Etudiant</u>)
+    + supprimerEtu(etu: <u>Etudiant</u>)
+    + calculerMoyGrpMat(matiere:  <u>chaine</u>): <u>double</u>
+    + calculerMoyGrpGen(): <u>double</u>
+    + triAlpha()
+    + triAntialpha()
+    + triParMerite()
+}
+Groupe --> Formation: - formation
+Groupe --> Etudiant: - etudiants : <u>List</u><<u>Etudiant</u>>
+@enduml
