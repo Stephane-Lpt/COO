@@ -1,8 +1,30 @@
-
+/**
+ * classe représentant l'identification d'un personne unique
+ */
 public class Identite {
 
-    private String nip, nom, prenom;
+    /**
+     * attribut Numero Identification Personnel
+     */
+    private String nip;
 
+    /**
+     * attribut relatif au nom de la personne
+     */
+    private String nom;
+
+    /**
+     * attribut relatif au prenom de la personne
+     */
+    private String prenom;
+
+
+    /**
+     * constructeur 3 paramètres, si au moins 1 paramètre == null alors NullPointerException
+     * @param nip Numero Identifiant Personnel
+     * @param nom nom de la personne
+     * @param prenom prenom de la personne
+     */
     protected Identite(String nip, String nom, String prenom){
         if (nip==null || nom==null | prenom==null) throw new NullPointerException();
         this.nip =nip;
@@ -10,6 +32,7 @@ public class Identite {
         this.prenom = prenom;
     }
 
+    // METHODES ACCESSEURS //
     public String getNip() {return nip;}
     public void setNip(String nip) {this.nip = nip;}
 
@@ -19,6 +42,14 @@ public class Identite {
     public String getPrenom() {return prenom;}
     public void setPrenom(String prenom) {this.prenom = prenom;}
 
+
+    // METHODE OVERRIDE //
+
+    /**
+     * comparateur d'égalite de la classe
+     * @param obj instance de la classe Identite
+     * @return true = si nip=obj.nip et nom==obj.nom et prenom==obj.prenom     sinon = false
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj.getClass()!=Identite.class) throw new ClassCastException();
@@ -26,6 +57,10 @@ public class Identite {
         return (nip.equals(id.nip) && nom.equals(id.nom) && prenom.equals(id.prenom));
     }
 
+    /**
+     * méthode d'affichage de la classe
+     * @return "nip nom prenom"
+     */
     @Override
     public String toString() {return nip+" "+nom+" "+prenom;}
 }
