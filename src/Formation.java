@@ -92,4 +92,13 @@ public class Formation {
         return this.coefMatieres.keySet();
     }
 
+
+
+
+
+
+    // METHODE ACCESSEUR POUR TEST //
+    public String getIdentifiant(){return this.identifiant;}
+
+    public HashMap<String, Double> getCoefMatieres() {return coefMatieres;}
 }

@@ -107,6 +107,7 @@ public class Etudiant extends Identite{
     /**
      * méthode de calcule de la moyenne par matière
      * si matiere=null, NullPointerException
+     * si matiere pas dans la formation de l'etudiant, IllegalArgumentException
      * @param matiere moyenne des notes dans la matiere fournie
      * @return
      */
@@ -114,7 +115,7 @@ public class Etudiant extends Identite{
         if (matiere==null) throw new NullPointerException();
 
         List<Double> notes = this.matNotes.get(matiere);
-        if (notes ==null) return null;
+        if (notes ==null) throw new IllegalArgumentException();
 
         double somme = 0.0;
         for(Double n : notes){
