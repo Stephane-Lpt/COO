@@ -9,6 +9,7 @@ class Etudiant{
     + Etudiant(nip: <u>chaine</u>, nom: <u>chaine</u>, prenom: <u>chaine</u>, formation: <u>Formation</u>)
 
     + ajouterNote(matiere: <u>chaine</u>, note: <u>double</u>)
+    + ajouterNote(matiere: <u>chaine</u>, note: <u>List</u><<u>Double</u>>)
     + calculerMoyMat(matiere: <u>chaine</u>): <u>double</u>
     + calculerMoyGen(): <u>double</u>
 }
@@ -30,8 +31,9 @@ class Formation{
     + Formation(identifiant: <u>chaine</u>)
 
     + ajouterMat(matiere: <u>chaine</u>, coef: <u>double</u>)
-    + supprimerMat(matiere: <u>chaine</u>)
-    + getCoef(matiere: <u>chaine</u>): double
+    + supprimerMat(matiere: <u>chaine</u>): <u>double</u>
+    + getCoef(matiere: <u>chaine</u>): <u>double</u>
+    + getMat(): <u>Set</u><<u>String</u>>
 }
 
 class Groupe{
