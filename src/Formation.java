@@ -78,7 +78,7 @@ public class Formation {
     }
 
     public double getCoef(String matiere){
-        if(matiere != null)
+        if(matiere != null && this.coefMatieres.containsKey(matiere))
             return this.coefMatieres.get(matiere);
         else
             throw new InvalidParameterException("Cette matière n'existe pas dans cette formation");
