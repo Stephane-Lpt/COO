@@ -3,6 +3,10 @@
  */
 public class Identite {
 
+    //======================//
+    //      ATTRIBUTS       //
+    //======================//
+
     /**
      * attribut Numero Identification Personnel
      */
@@ -19,6 +23,11 @@ public class Identite {
     private String prenom;
 
 
+
+    //=========================//
+    //      CONSTRUCTEUR       //
+    //=========================//
+
     /**
      * constructeur 3 paramètres, si au moins 1 paramètre == null alors NullPointerException
      * @param nip Numero Identifiant Personnel
@@ -32,7 +41,13 @@ public class Identite {
         this.prenom = prenom;
     }
 
-    // METHODES ACCESSEURS //
+
+
+    //================================//
+    //      METHODES ACCESSEURS       //
+    //================================//
+
+
     public String getNip() {return nip;}
     public void setNip(String nip) {this.nip = nip;}
 
@@ -43,7 +58,11 @@ public class Identite {
     public void setPrenom(String prenom) {this.prenom = prenom;}
 
 
-    // METHODE OVERRIDE //
+
+
+    //===============================//
+    //      METHODES OVERRRIDE       //
+    //===============================//
 
     /**
      * comparateur d'égalite de la classe
