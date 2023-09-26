@@ -31,6 +31,7 @@ class Formation{
     + Formation(identifiant: <u>chaine</u>)
 
     + ajouterMat(matiere: <u>chaine</u>, coef: <u>double</u>)
+    + ajouterMatieres(map: <u>Map<String, Double></u>)
     + supprimerMat(matiere: <u>chaine</u>): <u>double</u>
     + getCoef(matiere: <u>chaine</u>): <u>double</u>
     + getMat(): <u>Set</u><<u>String</u>>
