@@ -38,7 +38,7 @@ public class Groupe {
             }
         }
         else{
-            throw new NullPointerException("L'étudiant en argument n'a pas été initialisé (null)";
+            throw new NullPointerException("L'étudiant en argument n'a pas été initialisé (null)");
         }
     }
 
