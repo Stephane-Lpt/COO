@@ -71,7 +71,7 @@ public class Identite {
      */
     @Override
     public boolean equals(Object obj) {
-        if (obj.getClass()!=Identite.class) throw new ClassCastException();
+        if (!(obj instanceof Identite)) throw new ClassCastException();
         Identite id = (Identite) obj;
         return (nip.equals(id.nip) && nom.equals(id.nom) && prenom.equals(id.prenom));
     }

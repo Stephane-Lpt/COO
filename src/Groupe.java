@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class Groupe {
     public Groupe(Formation f){
         if(f!=null){
             this.formation = f;
+            this.etudiants = new ArrayList<>();
         }
         else{
             throw new NullPointerException("La formation est invalide pour la construction d'un groupe");
@@ -33,11 +35,19 @@ public class Groupe {
      */
     public void ajouterEtu(Etudiant etu){
         if(etu != null){
-            if(etu.getFormation() == this.formation && this.etudiants.contains(etu)) {
-                this.etudiants.add(etu);
+            if(etu.getFormation() == this.formation) {
+                if(!this.etudiants.contains(etu)) {
+                    this.etudiants.add(etu);
+                }
+                else{
+                    throw new IllegalArgumentException("Le groupe contient déjà cet élément");
+                }
+            }
+            else{
+                throw new IllegalArgumentException("Les formations du groupe et de l'étudiant doivent être les mêmes");
             }
         }
-        else{
+        else {
             throw new NullPointerException("L'étudiant en argument n'a pas été initialisé (null)");
         }
     }
@@ -52,5 +62,13 @@ public class Groupe {
         else{
             this.etudiants.remove(etu);
         }
+    }
+
+    public Formation getFormation() {
+        return formation;
+    }
+
+    public List<Etudiant> getEtudiants() {
+        return etudiants;
     }
 }
