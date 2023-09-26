@@ -5,6 +5,10 @@ import java.util.*;
  */
 public class Etudiant extends Identite{
 
+    //======================//
+    //      ATTRIBUTS       //
+    //======================//
+
     /**
      * attribut représentant les notes de l'etudiant par matière
      */
@@ -14,6 +18,12 @@ public class Etudiant extends Identite{
      * attribut représentant la formation suivit par l'étudiant
      */
     private Formation formation;
+
+
+
+    //=========================//
+    //      CONSTRUCTEUR       //
+    //=========================//
 
 
     /**
@@ -30,8 +40,18 @@ public class Etudiant extends Identite{
         this.formation = formation;
 
         this.matNotes = new HashMap<String, List<Double>>();
+        Set<String> listeMat = this.formation.getMatieres();
+        for (String m : listeMat){
+            this.matNotes.put(m, new ArrayList<Double>());
+        }
+
     }
 
+
+
+    //=====================//
+    //      METHODES       //
+    //=====================//
 
     /**
      * méthode qui permet d'ajouter 1 note pour 1 matière à l'étudiant si et seulement si 0 <= note <= 20 et
@@ -106,23 +126,33 @@ public class Etudiant extends Identite{
 
 
     /**
-     * méthode de calcule de la moyenne générale de l'etudiant par rapport
-     * @return
+     * méthode de calcule de la moyenne générale de l'etudiant par rapport au coefficient des matière dans sa formation
+     * @return moyenne générale etudiant selon coef formation
      */
     public Double calculerMoyGen(){
         double somme = 0.0;
+        double sommeCoef = 0.0;
         for (String m : this.matNotes.keySet()){
-            somme += calculerMoyMat(m);
+            double coef = this.formation.getCoef(m);
+            sommeCoef += coef;
+            somme += calculerMoyMat(m)*coef;
         }
-        return somme/(this.matNotes.size());
+        return somme/sommeCoef;
     }
 
 
-
+    //================================//
+    //      METHODES ACCESSEURS       //
+    //================================//
     public HashMap<String, List<Double>> getMatNotes() {return matNotes;}
     public Formation getFormation() {return formation;}
     public void setFormation(Formation f){this.formation = f;}
 
+
+
+    //==============================//
+    //      METHODES OVERRIDE       //
+    //==============================//
     @Override
     public boolean equals(Object obj) {
         return formation==formation && matNotes==matNotes && super.equals(obj);
