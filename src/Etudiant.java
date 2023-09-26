@@ -134,7 +134,7 @@ public class Etudiant extends Identite{
         double somme = 0.0;
         double sommeCoef = 0.0;
         for (String m : this.matNotes.keySet()){
-            if (this.matNotes.containsKey(m)){
+            if (!this.matNotes.get(m).isEmpty()){
                 double coef = this.formation.getCoef(m);
                 sommeCoef += coef;
                 somme += calculerMoyMat(m)*coef;
