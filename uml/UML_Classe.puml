@@ -12,7 +12,7 @@ class Etudiant{
     + calculerMoyMat(matiere: <u>chaine</u>): <u>double</u>
     + calculerMoyGen(): <u>double</u>
 }
-Etudiant --> Identite: - id
+Etudiant --|> Identite
 Etudiant --> Formation: - formation
 
 class Identite{
@@ -20,7 +20,7 @@ class Identite{
     - nom : <u>chaine</u>
     - prenom : <u>chaine</u>
 
-    + Identite(nip: <u>chaine</u>, nom: <u>chaine</u>, prenom: <u>chaine</u>)
+    # Identite(nip: <u>chaine</u>, nom: <u>chaine</u>, prenom: <u>chaine</u>)
 }
 
 class Formation{
