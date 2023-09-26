@@ -1,4 +1,3 @@
-import java.security.InvalidParameterException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -42,7 +41,7 @@ public class Formation {
             if (coef > 0)
                 this.coefMatieres.put(matiere, coef);
             else
-                throw new InvalidParameterException("le coefficient doit être strictement supérieur à 0");
+                throw new IllegalArgumentException("le coefficient doit être strictement supérieur à 0");
         }
         else{
                 throw new NullPointerException("Veuillez spécifier le nom de la matière lors de l'ajout");
@@ -81,7 +80,7 @@ public class Formation {
         if(matiere != null && this.coefMatieres.containsKey(matiere))
             return this.coefMatieres.get(matiere);
         else
-            throw new InvalidParameterException("Cette matière n'existe pas dans cette formation");
+            throw new IllegalArgumentException("Cette matière n'existe pas dans cette formation");
     }
 
     /**
