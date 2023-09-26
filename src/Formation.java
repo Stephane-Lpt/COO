@@ -100,4 +100,15 @@ public class Formation {
     public String getIdentifiant(){return this.identifiant;}
 
     public HashMap<String, Double> getCoefMatieres() {return coefMatieres;}
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Formation){
+            if(((Formation)obj).identifiant.equals(this.identifiant))
+            return true;
+        }
+
+        return false;
+
+    }
 }

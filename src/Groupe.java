@@ -27,5 +27,30 @@ public class Groupe {
         }
     }
 
+    /**
+     * Méthode permettant d'ajouter un étudiant au groupe
+     * @param etu l'étudiant à ajouter au groupe
+     */
+    public void ajouterEtu(Etudiant etu){
+        if(etu != null){
+            if(etu.getFormation() == this.formation && this.etudiants.contains(etu)) {
+                this.etudiants.add(etu);
+            }
+        }
+        else{
+            throw new NullPointerException("L'étudiant en argument n'a pas été initialisé (null)";
+        }
+    }
 
+    public void supprimerEtu(Etudiant etu){
+        if(etu == null){
+            throw new NullPointerException("L'étudiant en argument n'a pas été");
+        }
+        else if(!this.etudiants.contains(etu)){
+            throw new IllegalArgumentException("L'étudiant passé en argument ne fait pas parti de ce groupe");
+        }
+        else{
+            this.etudiants.remove(etu);
+        }
+    }
 }
