@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -62,6 +63,26 @@ public class Groupe {
         else{
             this.etudiants.remove(etu);
         }
+    }
+
+    public Double calculerMoyMat(String matiere){
+        double somme = 0.0;
+
+        Iterator<Etudiant> it = this.etudiants.iterator();
+        while (it.hasNext()){
+            Etudiant e = it.next();
+            double note = e.calculerMoyMat(matiere);
+            somme += note;
+        }
+        return somme / this.etudiants.size();
+    }
+
+    public Double calculerMoyGen(){
+        double somme = 0.0;
+        for (Etudiant e : this.etudiants){
+            somme += e.calculerMoyGen();
+        }
+        return somme / this.etudiants.size();
     }
 
     public Formation getFormation() {
