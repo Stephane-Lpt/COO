@@ -12,9 +12,13 @@ public class testGroupe {
     private Etudiant e1;
     private Etudiant e2;
     private Etudiant e3;
+    private Etudiant e4;
+    private Etudiant e5;
+    private Etudiant e6;
 
     private Groupe g1;
     private Groupe g2;
+    private Groupe g3;
 
     @BeforeEach
     public void setUp(){
@@ -38,8 +42,26 @@ public class testGroupe {
         e3 = new Etudiant("e3", "Hallyday", "Johny", f1);
         e3.ajouterNote("Mathématiques", 5.0);
 
+        e4 = new Etudiant("e3", "Ronaldo", "Christiano", f1);
+        e4.ajouterNote("Mathématiques", 5.0);
+
+        e5 = new Etudiant("e3", "Hirtz", "Grégoire", f1);
+        e5.ajouterNote("Mathématiques", 5.0);
+
+        e6 = new Etudiant("e3", "Casillas", "Iker", f1);
+        e6.ajouterNote("Mathématiques", 5.0);
+
         g1 = new Groupe(f1);
         g2 = new Groupe(f2);
+
+        // Après les tests d'ajout de groupe, nouveaux tests :
+        g3 = new Groupe(f1);
+        g3.ajouterEtu(e1);
+        g3.ajouterEtu(e2);
+        g3.ajouterEtu(e3);
+        g3.ajouterEtu(e4);
+        g3.ajouterEtu(e5);
+        g3.ajouterEtu(e6);
     }
 
 
@@ -105,12 +127,26 @@ public class testGroupe {
 
     @Test
     public void test_triAlpha() {
-
+        assertEquals("Manoudou", g3.getEtudiants().get(0).getNom());
+        g3.triAlpha();
+        assertEquals("Casillas",g3.getEtudiants().get(0).getNom());
+        assertEquals("Hallyday",g3.getEtudiants().get(1).getNom());
+        assertEquals("Hirtz",g3.getEtudiants().get(2).getNom());
+        assertEquals("Loppinet",g3.getEtudiants().get(3).getNom());
+        assertEquals("Manoudou",g3.getEtudiants().get(4).getNom());
+        assertEquals("Ronaldo",g3.getEtudiants().get(5).getNom());
     }
 
     @Test
     public void test_triAntiAlpha() {
-
+        assertEquals("Manoudou", g3.getEtudiants().get(0).getNom());
+        g3.triAntiAlpha();
+        assertEquals("Casillas",g3.getEtudiants().get(5).getNom());
+        assertEquals("Hallyday",g3.getEtudiants().get(4).getNom());
+        assertEquals("Hirtz",g3.getEtudiants().get(3).getNom());
+        assertEquals("Loppinet",g3.getEtudiants().get(2).getNom());
+        assertEquals("Manoudou",g3.getEtudiants().get(1).getNom());
+        assertEquals("Ronaldo",g3.getEtudiants().get(0).getNom());
     }
 
     @Test

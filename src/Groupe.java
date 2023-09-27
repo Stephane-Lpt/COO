@@ -64,6 +64,21 @@ public class Groupe {
         }
     }
 
+    public void triAlpha(){
+        this.etudiants.sort(new ComparateurAlpha());
+    }
+
+    public void triAntiAlpha(){
+        this.etudiants.sort(new ComparateurAntiAlpha());
+    }
+
+
+
+
+
+
+
+
     public Formation getFormation() {
         return formation;
     }
