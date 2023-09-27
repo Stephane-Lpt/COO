@@ -2,13 +2,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class testGroupe {
     private Formation f1;
     private Formation f2;
+
     private Etudiant e1;
     private Etudiant e2;
     private Etudiant e3;
@@ -96,11 +96,48 @@ public class testGroupe {
     @Test
     public void test_calculerMoyGrpMat() {
 
+        // matiere == null
+        assertThrows(NullPointerException.class, () -> {
+            g1.calculerMoyMat(null);
+        });
+
+
+
+        // liste etudiants vide
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            g1.calculerMoyMat("Mathématiques");
+        });
+
+
+        // matiere non dans formation
+        g1.ajouterEtu(e2);
+        assertThrows(IllegalArgumentException.class, () -> {
+            g1.calculerMoyMat("a");
+        });
+
+        // matiere sans  note pour au moins 1 etudiant
+        g1.ajouterEtu(e1);
+        assertEquals(8.0, g1.calculerMoyMat("SVT"));
+
+        // moyenne note maths 2 etudiant avec note
+        assertEquals(17.5, g1.calculerMoyMat("Mathématiques"), 0.0);
     }
 
     @Test
     public void test_calculerMoyGrpGen() {
 
+        //liste etudaint vide
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            g1.calculerMoyGen();
+        });
+
+        // calcule moy gen 1 etudiant
+        g1.ajouterEtu(e1);
+        assertEquals(11.235294117647058, g1.calculerMoyGen());
+
+        // calcule moy gen 2 etudiant
+        g1.ajouterEtu(e2);
+        assertEquals(15.617647058823529, g1.calculerMoyGen());
     }
 
     @Test

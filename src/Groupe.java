@@ -66,18 +66,33 @@ public class Groupe {
     }
 
     public Double calculerMoyMat(String matiere){
+        if (matiere == null) throw new NullPointerException();
+        if (this.etudiants.isEmpty()) throw new IndexOutOfBoundsException();
+        if (!this.formation.getMatieres().contains(matiere)) throw new IllegalArgumentException("matiere non conforme pour la formation du groupe");
+
         double somme = 0.0;
+        double nbEtu = 0;
 
         Iterator<Etudiant> it = this.etudiants.iterator();
         while (it.hasNext()){
             Etudiant e = it.next();
-            double note = e.calculerMoyMat(matiere);
-            somme += note;
+            double note=-1;
+
+            try {
+                note = e.calculerMoyMat(matiere);
+            }catch (IndexOutOfBoundsException e1){}
+
+            if (note!=-1) {
+                somme += note;
+                nbEtu++;
+            }
         }
-        return somme / this.etudiants.size();
+        return somme / nbEtu;
     }
 
     public Double calculerMoyGen(){
+        if (this.etudiants.isEmpty()) throw new IndexOutOfBoundsException();
+
         double somme = 0.0;
         for (Etudiant e : this.etudiants){
             somme += e.calculerMoyGen();
