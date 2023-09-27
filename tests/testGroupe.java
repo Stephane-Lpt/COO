@@ -188,7 +188,14 @@ public class testGroupe {
 
     @Test
     public void test_triParMerite(){
-
+        assertEquals("Manoudou", g3.getEtudiants().get(0).getNom());
+        g3.triParMerite();
+        assertEquals("Hallyday",g3.getEtudiants().get(0).getNom());
+        assertEquals("Ronaldo",g3.getEtudiants().get(1).getNom());
+        assertEquals("Hirtz",g3.getEtudiants().get(2).getNom());
+        assertEquals("Casillas",g3.getEtudiants().get(3).getNom());
+        assertEquals("Manoudou",g3.getEtudiants().get(4).getNom());
+        assertEquals("Loppinet",g3.getEtudiants().get(5).getNom());
     }
 
 }

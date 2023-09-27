@@ -73,6 +73,10 @@ public class Groupe {
         this.etudiants.sort(new ComparateurAntiAlpha());
     }
 
+    public void triParMerite(){
+        this.etudiants.sort(new ComparateurMerite());
+    }
+
 
     public Double calculerMoyMat(String matiere){
         if (matiere == null) throw new NullPointerException();
