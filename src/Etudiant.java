@@ -114,8 +114,14 @@ public class Etudiant extends Identite{
     public Double calculerMoyMat(String matiere){
         if (matiere==null) throw new NullPointerException();
 
+        //matiere pas dans le formation de l'etudiant
         List<Double> notes = this.matNotes.get(matiere);
         if (notes ==null) throw new IllegalArgumentException();
+
+
+        // pas de note pour la matiere
+        if (notes.isEmpty()) throw new IndexOutOfBoundsException();
+
 
         double somme = 0.0;
         for(Double n : notes){
@@ -140,6 +146,9 @@ public class Etudiant extends Identite{
                 somme += calculerMoyMat(m)*coef;
             }
         }
+
+        // si aucun note
+        if (sommeCoef==0.0) throw new IndexOutOfBoundsException();
         return somme/sommeCoef;
     }
 
