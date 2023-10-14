@@ -28,6 +28,7 @@ public class Groupe {
         else{
             throw new NullPointerException("La formation est invalide pour la construction d'un groupe");
         }
+        Etudiant[] tabEtu = this.etudiants.toArray(new Etudiant[0]);
     }
 
     /**
